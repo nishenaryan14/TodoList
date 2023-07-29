@@ -1,0 +1,30 @@
+        <%- include("header"); -%>
+        <div class="box" id="heading">
+            <h1> <%= listTitle %></h1>
+        </div>
+
+        <div class="box">
+           
+            <%for(var i=0; i<newListItems.length; i++){%>
+                <div class="item">
+                    <input type="checkbox">
+                    <%if(enteredTime[i] === ""){%>
+                        <% enteredTime[i] = "~~~~"%>
+                    <%}%>
+                    <p><%= enteredTime[i] %> <span><%= newListItems[i]  %></span></p>
+                    
+                </div>
+                    
+            <%}%>   
+            
+            <form class="item" action="/General" method="post" >
+                <div class="formdiv">
+                    <input class = "list-input" type="time" name="newTime" placeholder="New Time" autocomplete="off" >
+                    <input class = "list-input" type="text" name="newItem" placeholder="New Item" autocomplete="off" required>
+                </div>
+                <button type="submit" name="list" value="<%= listTitle %>">+</button>
+            </form>
+
+        </div>
+       
+        <%- include("footer"); -%>
